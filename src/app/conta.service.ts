@@ -27,17 +27,17 @@ export class ContaService {
     return this.http.get<Conta[]>(this.contasUrl)
         .pipe(
           tap(_ => this.log('peguei contas')),
-          catchError(this.handleError<Conta[]>('getHeroes', []))
+          catchError(this.handleError<Conta[]>('getContas', []))
         );
   }
 
   getConta(id: number): Observable<Conta> {
-    // TODO: send the message _after_ fetching the hero
+    // TODO: send the message _after_ fetching
   //  this.messageService.add(`ContaService: fetched conta id=${id}`);
     return this.http.get<Conta>(`${this.contasUrl}/${id}`)
     .pipe(
       tap(_ => this.log('peguei contas')),
-      catchError(this.handleError<Conta>('getHeroes'))
+      catchError(this.handleError<Conta>('getContas'))
     );
   }
 
@@ -49,7 +49,6 @@ export class ContaService {
     );
   }
 
-  /** POST: add a new hero to the server */
   cria (conta: Conta): Observable<Conta> {
     return this.http.post<Conta>(this.contasUrl,conta, this.httpOptions)
           .pipe(
@@ -88,9 +87,8 @@ export class ContaService {
     };
   }
 
-  /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
+    this.messageService.add(`ContaService: ${message}`);
   }
 
 }
