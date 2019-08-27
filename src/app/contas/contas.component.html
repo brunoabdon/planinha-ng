@@ -1,0 +1,21 @@
+<h2>Conta</h2>
+
+<div>
+  <label>Conta:
+    <input #contaNome />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="cria(contaNome.value); contaNome.value=''">
+    add
+  </button>
+</div>
+
+<ul class="contas">
+  <li *ngFor="let conta of contas">
+    <a routerLink="/detail/{{conta.id}}">
+      <span class="badge">{{conta.id}}</span> {{conta.nome}}
+    </a>
+    <button class="delete" title="Deleta {{conta.nome}}"
+      (click)="deleta(conta)">x</button>
+  </li>
+</ul>

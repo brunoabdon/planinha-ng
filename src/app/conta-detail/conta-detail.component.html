@@ -1,0 +1,11 @@
+<div *ngIf="conta">
+  <h2>Detalhes de {{conta.nome | uppercase}}</h2>
+  <div><span>id: </span>{{conta.id}}</div>
+  <div>
+    <label>nome:
+      <input [(ngModel)]="conta.nome" placeholder="nome"/>
+    </label>
+  </div>
+</div>
+<button (click)="goBack()">go back</button>
+<button (click)="save()">save</button>
